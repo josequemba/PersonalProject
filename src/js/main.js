@@ -10,28 +10,30 @@ const recipeInfo = new RecipeListing(dataSource, recipesContainer);
 
 recipeInfo.init();
 
-setTimeout( async () => {
-    const recipesLength = document.querySelector(".recipe-count");
-    const countLength = await dataSource.getData();
+setTimeout(async () => {
+  const recipesLength = document.querySelector(".recipe-count");
+  const countLength = await dataSource.getData();
 
-    countLength.length > 1 ? recipesLength.innerHTML = `${countLength.length} recipes` 
-    : countLength.length == 1 ? recipesLength.innerHTML = `${countLength.length} recipe`
-    : recipesLength.innerHTML ="";
+  countLength.length > 1
+    ? (recipesLength.innerHTML = `${countLength.length} recipes`)
+    : countLength.length == 1
+      ? (recipesLength.innerHTML = `${countLength.length} recipe`)
+      : (recipesLength.innerHTML = "");
 
-    document.querySelector(".btn-footer").addEventListener('click', function() {
-        const recipeList = recipesContainer;
-        const toggleIcon = document.querySelector('#toggleIcon');
-    
-        if (recipeList.classList.contains('list-view')) {
-            recipeList.classList.remove('list-view');
-            recipeList.classList.add('grid-view');
-            toggleIcon.classList.remove('fa-th-large');
-            toggleIcon.classList.add('fa-list');
-        } else {
-            recipeList.classList.remove('grid-view');
-            recipeList.classList.add('list-view');
-            toggleIcon.classList.remove('fa-list');
-            toggleIcon.classList.add('fa-th-large');
-        }
-    });
+  document.querySelector(".btn-footer").addEventListener("click", function () {
+    const recipeList = recipesContainer;
+    const toggleIcon = document.querySelector("#toggleIcon");
+
+    if (recipeList.classList.contains("list-view")) {
+      recipeList.classList.remove("list-view");
+      recipeList.classList.add("grid-view");
+      toggleIcon.classList.remove("fa-th-large");
+      toggleIcon.classList.add("fa-list");
+    } else {
+      recipeList.classList.remove("grid-view");
+      recipeList.classList.add("list-view");
+      toggleIcon.classList.remove("fa-list");
+      toggleIcon.classList.add("fa-th-large");
+    }
+  });
 }, 200);
