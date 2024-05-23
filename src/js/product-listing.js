@@ -8,11 +8,10 @@ import {
 
 loadHeaderFooter();
 
-
 const category = getParams("category");
 const dataSource = new ExternalServices();
-document.querySelector(".products-title").innerHTML = "Top Products: " +
-  capitalizeFirstLetter(category);
+document.querySelector(".products-title").innerHTML =
+  "Top Products: " + capitalizeFirstLetter(category);
 
 const element = document.querySelector(".product-list");
 const searchForm = document.querySelector("#search-form");
@@ -27,8 +26,8 @@ const listElement = new ProductListing(
 );
 listElement.init();
 
-
-document.querySelector(".show-favorites-button").addEventListener("click", function () {
-  window.location.href = "../favorite_products/index.html";
-})
-
+document
+  .querySelector(".show-favorites-button")
+  .addEventListener("click", function () {
+    window.location.href = "../favorite_products/index.html";
+  });

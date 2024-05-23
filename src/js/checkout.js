@@ -3,36 +3,36 @@ import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
 
-const CheckoutInfo = new CheckoutProcess(
-    "so-cart",
-    "#order-summary"
-);
+const CheckoutInfo = new CheckoutProcess("so-cart", "#order-summary");
 
 CheckoutInfo.init();
 
 // Select the zip code input element
-const zipCodeInput = document.getElementById('zip-code');
+const zipCodeInput = document.getElementById("zip-code");
 
-zipCodeInput ? zipCodeInput.addEventListener('input', function(event) {
-    const zipCodeValue = event.target.value;
+zipCodeInput
+  ? zipCodeInput.addEventListener("input", function (event) {
+      const zipCodeValue = event.target.value;
 
-    const isValidZipCode = /^\d{5}$/.test(zipCodeValue);
+      const isValidZipCode = /^\d{5}$/.test(zipCodeValue);
 
-    if (isValidZipCode) {
+      if (isValidZipCode) {
         //Valid zip code
         CheckoutInfo.calculateOrdertotal();
-    } else {
+      } else {
         //Invalid zip code
         CheckoutInfo.init();
-    }
-}) : "";
+      }
+    })
+  : "";
 
 const formOfCheckout = document.getElementById("checkout-form");
 
-formOfCheckout ? formOfCheckout.addEventListener("submit", async function(event) {
-    event.preventDefault();
+formOfCheckout
+  ? formOfCheckout.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-    /* let errorMessage = "";
+      /* let errorMessage = "";
 
     switch (true) {
         case event.target[0].value.trim() === "":
@@ -81,6 +81,6 @@ formOfCheckout ? formOfCheckout.addEventListener("submit", async function(event)
         return;
     } */
 
-    await CheckoutInfo.checkout(event);
-}) : "";
-
+      await CheckoutInfo.checkout(event);
+    })
+  : "";

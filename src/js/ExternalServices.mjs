@@ -11,15 +11,11 @@ async function convertToJson(res) {
 }
 
 export default class ExternalServices {
-  constructor(category) {
-    /* this.category = category;
-    this.path = `../json/${this.category}.json`; */
-  }
-  async getData(category) {
-    const response = await fetch(baseURL + `products/search/${category}`);
+  async getData() {
+    const response = await fetch(baseURL);
     const data = await convertToJson(response);
     //console.info(data)
-    return data.Result;
+    return data.recipes;
   }
 
   async findProductById(id) {

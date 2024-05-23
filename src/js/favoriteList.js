@@ -1,10 +1,6 @@
 import ExternalServices from "./ExternalServices.mjs";
 import ProductListing from "./ProductList.mjs";
-import {
-    loadHeaderFooter,
-    getParams,
-    getLocalStorage
-} from "./utils.mjs";
+import { loadHeaderFooter, getParams, getLocalStorage } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -17,11 +13,11 @@ const searchForm = document.querySelector("#search-form");
 const searchResult = document.querySelector("#result-search");
 
 const listElement = new ProductListing(
-    dataSource,
-    category,
-    element,
-    searchForm,
-    searchResult,
-    productId
+  dataSource,
+  category,
+  element,
+  searchForm,
+  searchResult,
+  productId,
 );
 listElement.init();
