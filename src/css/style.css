@@ -265,6 +265,12 @@ body {
   text-align: center;
 }
 
+.recipe-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Responsive Design */
 @media (max-width: 600px) {
   .list-view .recipe-container {

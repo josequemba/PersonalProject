@@ -11,23 +11,35 @@ export default class RecipeListing {
     }
 
     displayRecipes() {
-        this.datasource.forEach(recipe => {
+        this.datasource.forEach((recipe, index) => {
             const recipeHTML = `
             <div class="recipe-list list-view" id="recipeList">
                 <div class="recipe-container">
-                    <div class="recipe-image">
-                        <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
-                    </div>
-                    <div class="recipe-info">
-                    <div class="recipe-title">${recipe.title}</div>
-                    <div class="recipe-notes">${recipe.notes}</div>
-                    <div class="recipe-stars">${generateStars(5)}</div>
-                    </div>
+                    <a href="${recipe.link}" class="recipe-link" data-index="${index}">
+                        <div class="recipe-image">
+                            <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
+                        </div>
+                        <div class="recipe-info">
+                        <div class="recipe-title">${recipe.title}</div>
+                        <div class="recipe-notes">${recipe.notes}</div>
+                        <div class="recipe-stars">${generateStars(5)}</div>
+                        </div>
+                    </a>
                 </div>
             </div>
             `;
             this.parentSelector.innerHTML += recipeHTML;
         });
+
+        document.querySelectorAll('.recipe-link').forEach(link => {
+            link.addEventListener('click', function(event) {
+                const index = this.getAttribute('data-index');
+                console.log('Clicked recipe index:', index);
+                event.preventDefault(); 
+                //window.location.href = this.href; // Navigate to the link
+            });
+        });
+
     }
 }
         
