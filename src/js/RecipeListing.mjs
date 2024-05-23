@@ -1,6 +1,6 @@
 
 export default class RecipeListing {
-    constructor(datasource, parentSelector) {
+    constructor(datasource, parentSelector, recipesLenghth) {
       this.datasource = datasource;
       this.parentSelector = parentSelector;
     }
@@ -8,12 +8,9 @@ export default class RecipeListing {
     async init() {
         this.datasource = await this.datasource.getData();
         this.displayRecipes();
-        console.log(this.datasource)
-        //console.log(this.parentSelector)
     }
 
     displayRecipes() {
-        
         this.datasource.forEach(recipe => {
             const recipeHTML = `
             <div class="recipe-list list-view" id="recipeList">
@@ -32,9 +29,6 @@ export default class RecipeListing {
             this.parentSelector.innerHTML += recipeHTML;
         });
     }
-
-    
-
 }
         
 function generateStars(rating) {

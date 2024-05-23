@@ -8,12 +8,16 @@ const dataSource = new ExternalServices();
 const recipesContainer = document.querySelector(".recipe-list");
 const recipeInfo = new RecipeListing(dataSource, recipesContainer);
 
-
-
 recipeInfo.init();
-//setTimeout(b, 1000);
 
-setTimeout(() => {
+setTimeout( async () => {
+    const recipesLength = document.querySelector(".recipe-count");
+    const countLength = await dataSource.getData();
+
+    countLength.length > 1 ? recipesLength.innerHTML = `${countLength.length} recipes` 
+    : countLength.length == 1 ? recipesLength.innerHTML = `${countLength.length} recipe`
+    : recipesLength.innerHTML ="";
+
     document.querySelector(".btn-footer").addEventListener('click', function() {
         const recipeList = recipesContainer;
         const toggleIcon = document.querySelector('#toggleIcon');
@@ -30,5 +34,4 @@ setTimeout(() => {
             toggleIcon.classList.add('fa-th-large');
         }
     });
-    
 }, 200);
