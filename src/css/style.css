@@ -23,7 +23,7 @@
 
 body {
   font-family: var(--font-body);
-  line-height: 1.6;
+  line-height: 100%;
 }
 
 /* Container */
@@ -174,11 +174,12 @@ body {
 .recipe-container {
   display: block;
   align-items: center;
-  border: 1px solid #ccc;
   border-radius: 8px;
   padding: 10px;
-  width: 300px;
   margin: 10px;
+  width: 100%;
+  font-family: var(--font-body);
+  align-self: center;
 }
 
 .recipe-image {
@@ -244,7 +245,7 @@ body {
 
 /* list view */
 .list-view .recipe-container {
-  width: 500px;
+  width: 700px;
   flex-direction: row;
 }
 
@@ -268,6 +269,89 @@ body {
   display: block;
   text-decoration: none;
   color: inherit;
+}
+
+/* recipe */
+html, body {
+  height: 100%;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-listing {
+  max-width: 800px; 
+  width: 100%;
+  padding: 20px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.recipe-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recipe-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recipe-img {
+  border-radius: 100%;
+  max-width: 150px;
+  margin-right: 20px;
+}
+
+.recipe-category {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.recipe-notes {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.recipe-details {
+  margin-bottom: 10px;
+}
+
+.recipe-details-item {
+  margin-bottom: 5px;
+}
+
+.tab-container {
+  margin-bottom: 10px;
+}
+
+.tab-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.tab-button:hover {
+  background-color: #ddd;
+}
+
+.tab-content {
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+}
+
+.tab-content:first-child {
+  display: block; /* Display the first tab content by default */
+}
+
+.ingredient, .instruction {
+  margin-bottom: 5px;
 }
 
 /* Responsive Design */

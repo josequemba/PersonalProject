@@ -1,3 +1,4 @@
+import { getLocalStorage, setLocalSimpleStorage, setLocalStorage } from "./utils.mjs";
 
 export default class RecipeListing {
     constructor(datasource, parentSelector, recipesLenghth) {
@@ -34,9 +35,12 @@ export default class RecipeListing {
         document.querySelectorAll('.recipe-link').forEach(link => {
             link.addEventListener('click', function(event) {
                 const index = this.getAttribute('data-index');
-                console.log('Clicked recipe index:', index);
+                
                 event.preventDefault(); 
-                //window.location.href = this.href; // Navigate to the link
+
+                setLocalSimpleStorage("index", index);
+
+                window.location.href = this.href="../recipes_pages/index.html"; 
             });
         });
 

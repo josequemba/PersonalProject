@@ -34,6 +34,18 @@ export function setLocalStorage(key, newData) {
   }
 }
 
+export function setLocalSimpleStorage(key, newData) {
+  try {
+    // Convert data to a JSON string
+    const jsonData = JSON.stringify(newData);
+    // Set the item in localStorage
+    localStorage.setItem(key, jsonData);
+  } catch (error) {
+    // Log any errors that occur during the process
+    console.error('Error in setLocalSimpleStorage:', error);
+  }
+}
+
 //function to hide elements, id = html class to hide
 export function hideElement(htmlClass){
   document.querySelector(htmlClass).classList.add("hide");
