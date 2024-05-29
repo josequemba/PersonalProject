@@ -1,6 +1,7 @@
 {
   "recipes": [
     {
+      "id": "dfddbfdf",
       "title": "Classic Spaghetti Carbonara",
       "category": "Italian",
       "description": "A quick and easy Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
@@ -64,6 +65,7 @@
       "notes": "For a vegetarian version, omit the pancetta and add sautéed mushrooms instead."
     },
     {
+      "id": "dfddfdf",
       "title": "Chicken Alfredo",
       "category": "Italian",
       "description": "A rich and creamy pasta dish with grilled chicken, Parmesan cheese, and a smooth Alfredo sauce.",
@@ -125,6 +127,7 @@
       "notes": "For a lighter version, use half-and-half instead of heavy cream."
     },
     {
+      "id": "dfydbfdf",
       "title": "Margherita Pizza",
       "category": "Italian",
       "description": "A classic Italian pizza topped with fresh tomatoes, mozzarella cheese, basil, and olive oil.",
@@ -181,6 +184,7 @@
       "notes": "For a crispy crust, preheat the pizza stone or baking sheet in the oven before placing the pizza on it."
     },
     {
+      "id": "dfddbfdfl",
       "title": "Tacos al Pastor",
       "category": "Mexican",
       "description": "Traditional Mexican tacos made with marinated pork, pineapple, onions, and cilantro.",

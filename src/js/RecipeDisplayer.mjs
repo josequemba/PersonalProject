@@ -74,7 +74,7 @@ export default class RecipeDisplayer {
         setTimeout(() => {
             const getHeader = document.querySelector(".icons");
             getHeader.innerHTML = `
-                <button class="btn"><i class="fa fa-chevron-left"></i> </button>
+                <button id="go-back" class="btn"><i class="fa fa-chevron-left"></i> </button>
                 <button class="btn"><i class="fa fa-heart"></i> </button>
                 <button class="btn"><span>Edit</span></button>
                 `;
@@ -84,6 +84,12 @@ export default class RecipeDisplayer {
                 <span class="recipe-count"></span>
                 <button class="btn"><i class="fa fa-trash"></i> </button>
             `;
+            
+            //go back function
+            const goBack = document.querySelector("#go-back");
+            goBack.addEventListener("click", function(){
+                window.location.href="../index.html";
+            })
 
         }, 50);
     }
