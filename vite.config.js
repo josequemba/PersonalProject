@@ -10,6 +10,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         recipes: resolve(__dirname, "src/recipes_pages/index.html"),
+        favoritepage: resolve(__dirname, "src/favorite_page/index.html")
       },
     },
   },
