@@ -4,9 +4,12 @@ import RecipeListing from "./RecipeListing.mjs";
 
 loadHeaderFooter();
 
+const searchForm = document.querySelector("#search-form");
+const searchWord = document.querySelector("#search-input");
+const searchResult = document.querySelector("#result-search");
 const dataSource = new ExternalServices();
 const recipesContainer = document.querySelector(".recipe-list");
-const recipeInfo = new RecipeListing(dataSource, recipesContainer);
+const recipeInfo = new RecipeListing(dataSource, recipesContainer, searchForm, searchResult, searchWord);
 
 recipeInfo.init();
 
@@ -35,5 +38,9 @@ setTimeout(async () => {
       toggleIcon.classList.remove("fa-list");
       toggleIcon.classList.add("fa-th-large");
     }
+  });
+
+  document.querySelector("#favorite-btn").addEventListener("click", function () {
+    window.location.href = "../favorite_page/index.html";
   });
 }, 200);

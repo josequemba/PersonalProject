@@ -1,6 +1,6 @@
 import { setLocalSimpleStorage } from "./utils.mjs";
 
-export default class RecipeListing {
+export default class FavoritesDisplayer {
     constructor(datasource, parentSelector, searchForm, searchResult, searchWord) {
         this.datasource = datasource;
         this.parentSelector = parentSelector;
@@ -11,7 +11,9 @@ export default class RecipeListing {
 
     async init() {
         this.datasource = await this.datasource.getData();
-        this.displayRecipes(this.datasource);
+
+        const recipe = this.datasource.filter(element => [1, 2].includes(element.id));
+        this.displayRecipes(recipe);
 
         this.searchForm.addEventListener("submit", async (event) => {
             event.preventDefault();
@@ -38,7 +40,7 @@ export default class RecipeListing {
     }
 
     displayRecipes(list) {
-        list.forEach((recipe, index) => {
+        list.forEach((recipe) => {
             const recipeHTML = `
             <div class="recipe-list list-view" id="recipeList">
                 <div class="recipe-container">

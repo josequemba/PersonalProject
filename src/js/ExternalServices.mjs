@@ -75,5 +75,42 @@ export default class ExternalServices {
     } catch (error) {
         console.error('Error during checkout:', error);
     }
+  };
+
+  async removeItemsFromServer(itemToRemove) {
+    try {
+      // Fetch the current data from the server
+      const response = await fetch("/json/recipes.json");
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+  
+      // Remove the specified item
+      const newList = { "recipes": data.recipes.filter(element => element.id !== itemToRemove) };
+  
+      // Convert back to JSON string
+      const jsonString = JSON.stringify(newList);
+
+      // Set up the options for the POST request
+      const options = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.jsonString
+      };
+  
+      // Send the modified JSON to the server
+      const postResponse = await fetch("/json/recipes.json", options);
+      if (!postResponse.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const postData = await postResponse.json();
+  
+    } catch (error) {
+      console.error('Error during operation:', error);
+    }
   }
+
 }
