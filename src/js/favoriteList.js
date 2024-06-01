@@ -8,11 +8,18 @@ loadHeaderFooter();
 setTimeout(() => {
   const header = document.querySelector(".icons");
 
-  const htmlElement = `<button id= "favorite-btn" class="btn"><i class="fa fa-chevron-left"></i></button>
+  const htmlElement = `<button id= "go-back" class="btn"><i class="fa fa-chevron-left"></i></button>
                       <h1 class="logo">Favorites</h1>
                       <button class="btn"><i class="fa fa-plus" style="display: none;"></i></button>`;
 
   header.innerHTML = htmlElement;
+
+  //go back function
+  const goBack = document.querySelector("#go-back");
+  goBack.addEventListener("click", function(){
+      window.location.href="../index.html";
+  })
+
 }, 100);
 
 const searchForm = document.querySelector("#search-form");
