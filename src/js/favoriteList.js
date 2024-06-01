@@ -13,7 +13,7 @@ setTimeout(() => {
                       <button class="btn"><i class="fa fa-plus" style="display: none;"></i></button>`;
 
   header.innerHTML = htmlElement;
-}, 50);
+}, 100);
 
 const searchForm = document.querySelector("#search-form");
 const searchWord = document.querySelector("#search-input");
