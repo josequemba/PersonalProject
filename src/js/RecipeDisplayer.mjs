@@ -102,7 +102,7 @@ export default class RecipeDisplayer {
             const favoriteButtun = document.querySelector("#favorite-btn");
 
             this.currentID = getLocalStorage("index");
-            const favoriteItems = getLocalStorage("favorite-array");
+            const favoriteItems = getLocalStorage("favorite-array") || [];
             
             if (favoriteItems.includes(this.currentID)) {
                 if (favoriteButtun.classList.contains("btn-dark")) {
