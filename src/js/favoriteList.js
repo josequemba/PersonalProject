@@ -20,7 +20,7 @@ setTimeout(() => {
       window.location.href="../index.html";
   })
 
-}, 100);
+}, 500);
 
 const searchForm = document.querySelector("#search-form");
 const searchWord = document.querySelector("#search-input");
