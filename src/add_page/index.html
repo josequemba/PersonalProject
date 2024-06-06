@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Organizer</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header id="main-header" class="header"></header>
+
+    <main class="divider">
+        <br><br>
+        <h1 class="unique recipe-title">Add your own recipes</h1>
+
+        <section class="success-content"> </section>
+
+        <form id="recipe-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+        
+            <label for="ingredients">Ingredients (comma separated):</label>
+            <textarea id="ingredients" name="ingredients" rows="4" cols="50" required></textarea><br>
+        
+            <label for="instructions">Instructions (comma separated):</label>
+            <textarea id="instructions" name="instructions" rows="4" cols="50" required></textarea><br>
+        
+            <label for="prepTimeMinutes">Prep Time (minutes):</label>
+            <input type="number" id="prepTimeMinutes" name="prepTimeMinutes" required><br>
+        
+            <label for="cookTimeMinutes">Cook Time (minutes):</label>
+            <input type="number" id="cookTimeMinutes" name="cookTimeMinutes" required><br>
+        
+            <label for="servings">Servings:</label>
+            <input type="number" id="servings" name="servings" required><br>
+        
+            <label for="difficulty">Difficulty:</label>
+            <input type="text" id="difficulty" name="difficulty" required><br>
+        
+            <label for="cuisine">Cuisine:</label>
+            <input type="text" id="cuisine" name="cuisine" required><br>
+        
+            <label for="caloriesPerServing">Calories per Serving:</label>
+            <input type="number" id="caloriesPerServing" name="caloriesPerServing" required><br>
+        
+            <label for="mealType">Meal Type (comma separated):</label>
+            <input type="text" id="mealType" name="mealType" required><br>
+
+            <label for="image">Image URL (optional):</label>
+            <input type="text" id="image" name="image" placeholder="https://www.example.com/recipe-images/1.jpg"><br>
+        
+            <button type="submit" id="add-recipe-btn">Add Recipe</button>
+        </form>
+            
+        <br><br><br>
+    </main>
+
+    <footer id="main-footer"></footer>
+    <script src="../js/addrecipes.js" type="module"></script>
+  </body>
+</html>

@@ -50,7 +50,6 @@ setTimeout(async () => {
       recipeList.classList.add("grid-view");
       toggleIcon.classList.remove("fa-th-large");
       toggleIcon.classList.add("fa-list");
-    } else {
       recipeList.classList.remove("grid-view");
       recipeList.classList.add("list-view");
       toggleIcon.classList.remove("fa-list");

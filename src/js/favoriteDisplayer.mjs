@@ -1,4 +1,4 @@
-import { setLocalSimpleStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalSimpleStorage } from "./utils.mjs";
 
 export default class FavoritesDisplayer {
     constructor(datasource, parentSelector, searchForm, searchResult, searchWord) {
@@ -12,7 +12,23 @@ export default class FavoritesDisplayer {
     async init() {
         this.datasource = await this.datasource.getData();
 
-        const recipe = this.datasource.filter(element => [1, 2].includes(element.id));
+        const favoriteRecipesArray = getLocalStorage("favorite-array").map(str => parseInt(str));
+
+        if (favoriteRecipesArray.length == 0) {
+            this.parentSelector.innerHTML = `
+                <div style="text-align: center; padding: 20px;">
+                    <br> <br> <br> 
+                    <h2 style="font-family: Arial, sans-serif; color: #333;">No Recipes Found</h2>
+                    <br> <br> <br> 
+                    <p style="font-family: Arial, sans-serif; color: #666;">It seems you have not added any recipes to your favorites yet. Please explore our collection and add your favorite recipes.</p>
+                    <br> <br> <br> 
+                    <button style="padding: 10px 20px; font-size: 16px; font-family: Arial, sans-serif; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="window.location.href='/explore'">Explore Recipes</button>
+                </div>
+            `;
+        }
+
+        const recipe = this.datasource.filter(element => favoriteRecipesArray.includes(element.id));
+
         this.displayRecipes(recipe);
 
         this.searchForm.addEventListener("submit", async (event) => {
@@ -72,7 +88,6 @@ export default class FavoritesDisplayer {
                 window.location.href = this.href = "../recipes_pages/index.html";
             });
         });
-
     }
 }
 

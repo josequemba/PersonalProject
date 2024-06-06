@@ -43,4 +43,8 @@ setTimeout(async () => {
   document.querySelector("#favorite-btn").addEventListener("click", function () {
     window.location.href = "../favorite_page/index.html";
   });
-}, 200);
+
+  document.querySelector("#add-btn").addEventListener("click", function () {
+    window.location.href = "../add_page/index.html";
+  });
+}, 500);

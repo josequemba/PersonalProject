@@ -1,16 +1,17 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, removeItemsFromLocalStorage, setLocalSimpleStorage, setLocalStorage } from "./utils.mjs";
 
 export default class RecipeDisplayer {
     constructor(datasource, parentSelector) {
       this.datasource = datasource;
       this.parentSelector = parentSelector;
       this.getfunctions = datasource;
+      this.currentID;
     }
 
     async init() {
-        const idNumber = getLocalStorage("index");
+        this.currentID = getLocalStorage("index");
         this.datasource = await this.datasource.getData();
-        this.datasource = this.datasource.filter(element => element.id == idNumber);
+        this.datasource = this.datasource.filter(element => element.id == this.currentID);
 
         this.changeHeaderFooter();
         this.displayRecipes();
@@ -75,8 +76,8 @@ export default class RecipeDisplayer {
             const getHeader = document.querySelector(".icons");
             getHeader.innerHTML = `
                 <button id="go-back" class="btn"><i class="fa fa-chevron-left"></i> </button>
-                <button class="btn"><i class="fa fa-heart"></i> </button>
-                <button class="btn"><span>Edit</span></button>
+                <button id="favorite-btn" class="btn"><i class="fa fa-heart"></i> </button>
+                <button class="btn" style="display: none;"><span>Edit</span></button>
                 `;
 
             const getfooter = document.querySelector(".footer-nav");
@@ -96,11 +97,72 @@ export default class RecipeDisplayer {
 
             const result = await this.getfunctions.removeItemsFromServer(this.datasource[0].id);
             
-            console.log(result);
             //console.log(this.datasource[0].id);
             goBack.addEventListener("click", function(){
                 this.datasource.ge
                 window.location.href="../index.html";
+            })
+
+            //favorites
+            const favoriteButtun = document.querySelector("#favorite-btn");
+
+            this.currentID = getLocalStorage("index");
+            const favoriteItems = getLocalStorage("favorite-array");
+            
+            if (favoriteItems.includes(this.currentID)) {
+                if (favoriteButtun.classList.contains("btn-dark")) {
+                    //do nothing
+                } else {
+                    favoriteButtun.classList.toggle("btn-dark");
+                }
+            }
+
+            favoriteButtun.addEventListener("click", function(){
+                //add to favorite
+                this.currentID = getLocalStorage("index");
+                const favotiteArray = getLocalStorage("favorite-array");
+
+                if (favotiteArray.includes(this.currentID)) {
+                    removeItemsFromLocalStorage("favorite-array", this.currentID);
+                    //manage color
+                    favoriteButtun.classList.toggle("btn-dark");
+                } else {
+                    setLocalStorage("favorite-array", this.currentID)
+                    //manage color
+                    favoriteButtun.classList.toggle("btn-dark");
+                }
+            });
+
+            //delete
+            document.querySelector("#delete-recipe").addEventListener("click", function(){
+                this.currentID = getLocalStorage("index");
+                const itemsArray = getLocalStorage("userRecipe");
+
+                if (this.currentID >= 31) {
+                    const removeItem = itemsArray.filter(element => element.id !== this.currentID);
+                    console.log("removeItem");
+                    console.log(removeItem);
+
+                    document.querySelector("#confirmationDialog").style.display = "block";
+
+                    document.querySelector("#cancelDeleteButton").addEventListener("click", function (){
+                        document.querySelector(".dialog").style.display = "none";
+                    });
+
+                    document.querySelector("#confirmDeleteButton").addEventListener("click", function (){
+                        document.querySelector(".dialog").style.display = "none";
+                        setLocalSimpleStorage("userRecipe", removeItem);
+
+                        window.location.href = "/src/index.html";
+                    });
+                } else {
+                    //only can delete your own recipes
+                    document.querySelector("#alertDialog").style.display = "block";
+
+                    document.querySelector("#okButton").addEventListener("click", function (){
+                        document.querySelector("#alertDialog").style.display = "none";
+                    });
+                }
             })
 
         }, 50);
@@ -108,4 +170,15 @@ export default class RecipeDisplayer {
 
 }
         
-        
+// Function to remove recipe by ID
+function removeById(arr, id) {
+    const index = arr.findIndex(item => item.id === id);
+    
+    // If element with the given ID exists, remove it
+    if (index !== -1) {
+        arr.splice(index, 1);
+        return true; // Element removed successfully
+    } else {
+        return false; // Element with given ID not found
+    }
+}

@@ -1,3 +1,5 @@
+import { getLocalStorage } from "./utils.mjs";
+
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 async function convertToJson(res) {
@@ -14,8 +16,14 @@ export default class ExternalServices {
   async getData() {
     const response = await fetch(baseURL);
     const data = await convertToJson(response);
-    //console.info(data)
-    return data.recipes;
+    const data2 = getLocalStorage("userRecipe");
+    //console.info([...data.recipes, ...data2])
+    //console.info(data2)
+    if (data2 === null) {
+      return data.recipes;
+    } else {
+      return [...data.recipes, ...data2];
+    }
   }
 
   async findProductById(id) {
