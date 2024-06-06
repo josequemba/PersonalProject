@@ -90,12 +90,7 @@ export default class RecipeDisplayer {
             const goBack = document.querySelector("#go-back");
             goBack.addEventListener("click", function(){
                 window.location.href="../index.html";
-            })
-
-            //go back function
-            const deleteRecipe = document.querySelector("#delete-recipe");
-
-            const result = await this.getfunctions.removeItemsFromServer(this.datasource[0].id);
+            });
             
             //console.log(this.datasource[0].id);
             goBack.addEventListener("click", function(){

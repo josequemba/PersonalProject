@@ -49,7 +49,7 @@ document.getElementById('recipe-form').addEventListener('submit', async function
         const cuisine = document.getElementById('cuisine').value;
         const caloriesPerServing = document.getElementById('caloriesPerServing').value;
         const mealType = document.getElementById('mealType').value.split(',').map(item => item.trim());
-        const image = document.getElementById('image').value || "/images/myown.png";
+        const image = document.getElementById('image').value || "https://josequemba.github.io/PersonalProject/src/public/images/myown.png";
     
         //generate id
         const dataSource = new ExternalServices();
@@ -99,22 +99,3 @@ document.getElementById('recipe-form').addEventListener('submit', async function
     }
 });
 
-/* setTimeout(() => {
-    
-    document.getElementById("recipe-form").innerHTML = "";
-
-    document.querySelector(".success-content").innerHTML = 
-    `<span class="success-icon">&#10004;</span>
-
-        <span class="success-title">
-            <br><br>
-            <h1>Recipe Saved Successfully</h1>
-            
-        </span>
-        <br>
-        <p>
-        Your recipe has been successfully saved. Thank you for using our service!
-        </p>
-        <br>
-    `;
-}, 500); */

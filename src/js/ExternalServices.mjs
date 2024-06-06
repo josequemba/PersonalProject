@@ -45,23 +45,4 @@ export default class ExternalServices {
           throw error; // Rethrow the error to handle it elsewhere if needed
       }
   }
-
-  async checkout (formObject) {
-    //const url = "https://wdd330-backend.onrender.com:3000/checkout";
-    const options = {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formObject)
-    };
-
-    try {
-        //const response = await fetch(url, options);
-        //const data = await response.json();
-        return fetch(baseURL + "checkout/", options).then(convertToJson);
-    } catch (error) {
-        console.error('Error during checkout:', error);
-    }
-  };
 }
