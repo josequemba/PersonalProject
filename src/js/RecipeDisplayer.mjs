@@ -133,7 +133,9 @@ export default class RecipeDisplayer {
                 const itemsArray = getLocalStorage("userRecipe");
 
                 if (this.currentID >= 31) {
-                    const removeItem = itemsArray.filter(element => element.id !== this.currentID);
+                    const removeItem = itemsArray.filter(element => element.id != this.currentID);
+                    console.log(this.currentID);
+                    console.log(removeItem);
 
                     document.querySelector("#confirmationDialog").style.display = "block";
 
@@ -142,6 +144,7 @@ export default class RecipeDisplayer {
                     });
 
                     document.querySelector("#confirmDeleteButton").addEventListener("click", function (){
+                        console.log(removeItem);
                         document.querySelector(".dialog").style.display = "none";
                         setLocalSimpleStorage("userRecipe", removeItem);
 
