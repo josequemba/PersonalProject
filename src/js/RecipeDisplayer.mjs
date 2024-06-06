@@ -135,8 +135,6 @@ export default class RecipeDisplayer {
 
                 if (this.currentID >= 31) {
                     const removeItem = itemsArray.filter(element => element.id !== this.currentID);
-                    console.log("removeItem");
-                    console.log(removeItem);
 
                     document.querySelector("#confirmationDialog").style.display = "block";
 

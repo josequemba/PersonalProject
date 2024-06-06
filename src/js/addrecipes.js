@@ -21,7 +21,7 @@ setTimeout(() => {
   //footer
   const footerChange = document.querySelector(".footer-nav").innerHTML = "";
 
-}, 100);
+}, 500);
 
 localStorage.removeItem("userRecipe");
 
