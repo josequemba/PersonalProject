@@ -135,6 +135,4 @@ export function removeItemsFromLocalStorage(key, itemToRemove) {
   // Step 3: Save the updated array back to local storage
   localStorage.setItem(key, JSON.stringify(filteredArray));
   
-  // Log the result to verify
-  console.log(filteredArray);
 }

@@ -19,9 +19,7 @@ export default class RecipeListing {
             this.parentSelector.innerHTML = '';
             const newList = filterListBySearch(this.datasource, this.searchWord.value);
 
-            this.displayRecipes(newList)
-
-            console.log(newList.length);
+            this.displayRecipes(newList);
 
             if (newList.length > 0) {
                 this.searchResult.style.display = "inline-block";

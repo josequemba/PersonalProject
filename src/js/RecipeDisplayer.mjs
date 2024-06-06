@@ -19,7 +19,6 @@ export default class RecipeDisplayer {
 
     displayRecipes() {
         const recipe = this.datasource[0];
-        console.log(recipe)
         const recipeHTML = `
         <div class="recipe-container">
             <div class="recipe-title">${recipe.name}</div>

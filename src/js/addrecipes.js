@@ -55,8 +55,6 @@ document.getElementById('recipe-form').addEventListener('submit', async function
         const dataSource = new ExternalServices();
         let data = await dataSource.getData();
     
-        console.log(data.length);
-    
         // Create an object to hold the form data
         const recipeData = {
             id: data.length + 1, 
