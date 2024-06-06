@@ -165,7 +165,7 @@ export default class RecipeDisplayer {
                 }
             })
 
-        }, 50);
+        }, 500);
     }
 
 }
