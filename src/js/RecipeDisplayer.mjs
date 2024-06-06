@@ -145,7 +145,7 @@ export default class RecipeDisplayer {
                         document.querySelector(".dialog").style.display = "none";
                         setLocalSimpleStorage("userRecipe", removeItem);
 
-                        window.location.href = "/src/index.html";
+                        window.location.href = "../index.html";
                     });
                 } else {
                     //only can delete your own recipes
